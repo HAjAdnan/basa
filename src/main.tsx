@@ -37,6 +37,10 @@ const AppContent: React.FC = () => {
         if (!response.ok) return;
         const data = await response.json();
         if (data && data.version && data.version !== CURRENT_VERSION) {
+          const updatedVersion = localStorage.getItem('updated_to_version');
+          if (updatedVersion === data.version) {
+            return;
+          }
           const dismissedVersion = sessionStorage.getItem('dismissed_version');
           if (dismissedVersion !== data.version) {
             setServerVersion(data.version);
@@ -52,6 +56,9 @@ const AppContent: React.FC = () => {
   }, []);
 
   const handleUpdateApp = () => {
+    if (serverVersion) {
+      localStorage.setItem('updated_to_version', serverVersion);
+    }
     if ('caches' in window) {
       caches.keys().then((names) => {
         for (let name of names) caches.delete(name);
