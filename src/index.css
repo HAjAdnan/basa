@@ -73,33 +73,39 @@
 
 body {
   font-family: var(--font-main);
-  background-color: #121214; /* Dark outer backdrop for desktop */
+  background-color: var(--bg-app);
   color: var(--text-primary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
-  overflow: hidden;
+  margin: 0;
   line-height: 1.6;
 }
 
 /* Limit desktop view to mobile proportions */
 #root {
   width: 100%;
-  max-width: 480px;
+  max-width: 100%; /* Default to full width on all mobile & tablet screens */
   height: 100vh;
   background-color: var(--bg-app);
-  box-shadow: 0 0 30px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1025px) {
+  body {
+    background-color: #121214; /* Dark outer backdrop only on desktops */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
   #root {
-    max-width: 100%;
-    box-shadow: none;
+    max-width: 480px;
+    height: 90vh; /* Boxed view on desktops */
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
   }
 }
 
