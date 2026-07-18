@@ -79,7 +79,39 @@ export const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. Fast Location Search Form */}
+      {/* 2. Mini-CTA: Post Ads (Moved to top and made smaller) */}
+      <Link to="/profile" style={{ textDecoration: 'none' }}>
+        <div className="card fade-in" style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          padding: '10px 14px',
+          background: 'linear-gradient(135deg, rgba(15, 157, 88, 0.05) 0%, rgba(26, 115, 232, 0.05) 100%)',
+          borderColor: 'rgba(15, 157, 88, 0.15)',
+          borderRadius: 'var(--radius-md)'
+        }}>
+          <span style={{ fontSize: '18px' }}>📢</span>
+          <div style={{ flex: 1 }}>
+            <h4 style={{ fontSize: '13px', fontWeight: '700', color: 'var(--text-primary)', margin: 0 }}>আপনি কি বাসা ভাড়া দিতে চান?</h4>
+            <p style={{ fontSize: '11px', color: 'var(--text-secondary)', margin: 0 }}>এখানে ক্লিক করে ফ্রি বিজ্ঞাপন পোস্ট করুন</p>
+          </div>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '26px',
+            height: '26px',
+            borderRadius: '50%',
+            backgroundColor: 'var(--primary)',
+            color: 'white',
+            flexShrink: 0
+          }}>
+            <ArrowRight size={12} />
+          </div>
+        </div>
+      </Link>
+
+      {/* 3. Fast Location Search Form */}
       <form onSubmit={handleSearchSubmit} className="card" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <h3 style={{ fontSize: '16px', fontWeight: '700' }}>তাড়াতাড়ি খুঁজুন</h3>
         
@@ -175,16 +207,7 @@ export const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* 5. CTA banner */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', background: 'var(--bg-card)' }}>
-        <div>
-          <h4 style={{ fontSize: '14px', fontWeight: '700' }}>আপনি কি বাসা ভাড়া দিতে চান?</h4>
-          <p style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>কয়েক মিনিটে ছবি ও লোকেশন দিয়ে ফ্রী পোস্ট করুন।</p>
-        </div>
-        <Link to="/profile" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', color: 'var(--primary)' }}>
-          <ArrowRight size={18} />
-        </Link>
-      </div>
+
 
     </div>
   );
