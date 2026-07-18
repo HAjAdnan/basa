@@ -23,6 +23,49 @@ const AppContent: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [unreadNotifications, setUnreadNotifications] = useState(0);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [serverVersion, setServerVersion] = useState('');
+  const [releaseNotes, setReleaseNotes] = useState('');
+
+  const CURRENT_VERSION = '1.0.0';
+
+  // Check for app updates
+  useEffect(() => {
+    const checkVersion = async () => {
+      try {
+        const response = await fetch(`/version.json?t=${Date.now()}`);
+        if (!response.ok) return;
+        const data = await response.json();
+        if (data && data.version && data.version !== CURRENT_VERSION) {
+          const dismissedVersion = sessionStorage.getItem('dismissed_version');
+          if (dismissedVersion !== data.version) {
+            setServerVersion(data.version);
+            setReleaseNotes(data.releaseNotes || 'নতুন উন্নত ডিজাইন এবং স্পিড যুক্ত করা হয়েছে।');
+            setShowUpdateModal(true);
+          }
+        }
+      } catch (err) {
+        console.error('Error checking version:', err);
+      }
+    };
+    checkVersion();
+  }, []);
+
+  const handleUpdateApp = () => {
+    if ('caches' in window) {
+      caches.keys().then((names) => {
+        for (let name of names) caches.delete(name);
+      });
+    }
+    window.location.href = window.location.origin + '/?cache_bypass=' + Date.now();
+  };
+
+  const handleSkipUpdate = () => {
+    if (serverVersion) {
+      sessionStorage.setItem('dismissed_version', serverVersion);
+    }
+    setShowUpdateModal(false);
+  };
 
   // Fetch unread notifications count
   const fetchNotifications = async () => {
@@ -144,6 +187,83 @@ const AppContent: React.FC = () => {
       {/* Dynamic Navigation */}
       {!isChatRoom && (
         <Navigation unreadNotifsCount={unreadNotifications} />
+      )}
+
+      {/* Modern Update Modal */}
+      {showUpdateModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          zIndex: 10000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px'
+        }}>
+          <div style={{
+            backgroundColor: 'var(--bg-card)',
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid var(--border-color)',
+            padding: '28px 24px',
+            width: '100%',
+            maxWidth: '340px',
+            boxShadow: '0 24px 48px rgba(0,0,0,0.2)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '18px',
+            textAlign: 'center'
+          }} className="fade-in">
+            <span style={{ fontSize: '48px' }}>🚀</span>
+            <div>
+              <h3 style={{ fontSize: '18px', fontWeight: '800', marginBottom: '6px' }}>নতুন আপডেট পাওয়া গিয়েছে!</h3>
+              <span style={{ fontSize: '11px', color: 'var(--primary)', fontWeight: 'bold', backgroundColor: 'var(--primary-light)', padding: '2px 8px', borderRadius: 'var(--radius-full)' }}>
+                Version {serverVersion}
+              </span>
+            </div>
+            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.5', margin: 0 }}>
+              {releaseNotes}
+            </p>
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '6px' }}>
+              <button 
+                onClick={handleUpdateApp}
+                style={{
+                  backgroundColor: 'var(--primary)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: 'var(--radius-md)',
+                  padding: '12px 20px',
+                  width: '100%',
+                  fontWeight: '700',
+                  fontSize: '13px',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 12px rgba(15, 157, 88, 0.2)'
+                }}
+              >
+                আপডেট করুন
+              </button>
+              <button 
+                onClick={handleSkipUpdate}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text-tertiary)',
+                  fontSize: '12px',
+                  cursor: 'pointer',
+                  padding: '4px'
+                }}
+              >
+                পরে করব
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
