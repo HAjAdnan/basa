@@ -1,0 +1,9 @@
+{
+	"appId": "com.hajadnan.basa",
+	"appName": "Basa Finder",
+	"webDir": "dist",
+	"server": {
+		"url": "https://basa-azi.pages.dev",
+		"cleartext": true
+	}
+}
