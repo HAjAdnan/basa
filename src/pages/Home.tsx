@@ -55,21 +55,20 @@ export const Home: React.FC = () => {
       
       {/* 1. Welcoming Hero Banner */}
       <div style={{
-        background: 'linear-gradient(135deg, var(--primary), #11b164)',
+        background: 'linear-gradient(135deg, #0F9D58 0%, #00796B 50%, #0288D1 100%)',
         borderRadius: 'var(--radius-lg)',
         padding: '24px 20px',
         color: 'white',
         position: 'relative',
         overflow: 'hidden',
-        boxShadow: '0 8px 24px rgba(15, 157, 88, 0.25)'
+        boxShadow: '0 8px 24px rgba(0, 121, 107, 0.2)'
       }}>
         <div style={{ position: 'absolute', right: '-20px', bottom: '-20px', opacity: 0.1, transform: 'scale(1.5)' }}>
           <Building size={160} />
         </div>
         
-        <h2 style={{ fontSize: '22px', fontWeight: '800', color: 'white', marginBottom: '8px', fontFamily: 'var(--font-title)' }}>
-          বাসা খুঁজুন ঝামেলা ছাড়াই
-        </h2>
+        <h2 style={{ fontSize: '22px', fontWeight: '800', color: 'white', marginBottom: '8px', fontFamily: 'var(--font-title)', textShadow: '0 2px 4px rgba(0,0,0,0.15)' }}>
+          বাসা খুঁজুন ঝামেলা ছাড়াই</h2>
         <p style={{ fontSize: '13px', opacity: 0.9, lineHeight: '1.4', maxWidth: '80%' }}>
           আপনার বাজেট ও চাহিদামতো বাংলাদেশের যেকোনো প্রান্তের ভাড়া বাসা খুঁজে নিন মাত্র কয়েকটি ক্লিকে।
         </p>
@@ -125,7 +124,7 @@ export const Home: React.FC = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
           <Link to="/listings?bedrooms=1" style={{ textDecoration: 'none' }}>
             <div className="category-card">
-              <div className="category-icon-wrapper">🧔</div>
+              <div className="category-icon-wrapper icon-bachelor">🧔</div>
               <span className="category-title">ব্যাচেলর রুম</span>
               <span className="category-subtitle">১ বেডরুম বাসা</span>
             </div>
@@ -133,7 +132,7 @@ export const Home: React.FC = () => {
 
           <Link to="/listings?maxRent=15000" style={{ textDecoration: 'none' }}>
             <div className="category-card">
-              <div className="category-icon-wrapper">💰</div>
+              <div className="category-icon-wrapper icon-budget">💰</div>
               <span className="category-title">বাজেট বাসা</span>
               <span className="category-subtitle">১৫,০০০৳ এর নিচে</span>
             </div>
@@ -141,7 +140,7 @@ export const Home: React.FC = () => {
 
           <Link to="/listings?bedrooms=3" style={{ textDecoration: 'none' }}>
             <div className="category-card">
-              <div className="category-icon-wrapper">👨‍👩‍👧‍👦</div>
+              <div className="category-icon-wrapper icon-family">👨‍👩‍👧‍👦</div>
               <span className="category-title">ফ্যামিলি বাসা</span>
               <span className="category-subtitle">৩+ বেডরুম বাসা</span>
             </div>
@@ -149,7 +148,7 @@ export const Home: React.FC = () => {
 
           <Link to="/listings?hasLift=true" style={{ textDecoration: 'none' }}>
             <div className="category-card">
-              <div className="category-icon-wrapper">🛗</div>
+              <div className="category-icon-wrapper icon-lift">🛗</div>
               <span className="category-title">লিফট ব্যাকআপ</span>
               <span className="category-subtitle">আধুনিক সুযোগ-সুবিধা</span>
             </div>
