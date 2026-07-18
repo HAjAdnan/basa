@@ -1,0 +1,17 @@
+{
+  "short_name": "Basa Finder",
+  "name": "Basa Finder - ভাড়া বাসা খুঁজুন সহজে",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230F9D58'%3E%3Cpath d='M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z'/%3E%3C/svg%3E",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#F8F9FA",
+  "theme_color": "#0F9D58",
+  "display": "standalone",
+  "orientation": "portrait"
+}
