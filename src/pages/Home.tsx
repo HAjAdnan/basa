@@ -153,7 +153,7 @@ export const Home: React.FC = () => {
       {/* 3. Popular Categories Shortcuts */}
       <div>
         <h3 style={{ fontSize: '15px', fontWeight: '700', marginBottom: '12px' }}>জনপ্রিয় ক্যাটাগরি</h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
+        <div className="category-grid">
           <Link to="/listings?bedrooms=1" style={{ textDecoration: 'none' }}>
             <div className="category-card">
               <div className="category-icon-wrapper icon-bachelor">🧔</div>
