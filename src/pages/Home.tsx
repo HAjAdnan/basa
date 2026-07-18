@@ -122,36 +122,36 @@ export const Home: React.FC = () => {
       {/* 3. Popular Categories Shortcuts */}
       <div>
         <h3 style={{ fontSize: '15px', fontWeight: '700', marginBottom: '12px' }}>জনপ্রিয় ক্যাটাগরি</h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
           <Link to="/listings?bedrooms=1" style={{ textDecoration: 'none' }}>
-            <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '14px', textAlign: 'center' }}>
-              <span style={{ fontSize: '20px' }}>🧔</span>
-              <span style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-primary)' }}>ব্যাচেলর রুম</span>
-              <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>১ বেডরুম বাসা</span>
+            <div className="category-card">
+              <div className="category-icon-wrapper">🧔</div>
+              <span className="category-title">ব্যাচেলর রুম</span>
+              <span className="category-subtitle">১ বেডরুম বাসা</span>
             </div>
           </Link>
 
           <Link to="/listings?maxRent=15000" style={{ textDecoration: 'none' }}>
-            <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '14px', textAlign: 'center' }}>
-              <span style={{ fontSize: '20px' }}>💰</span>
-              <span style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-primary)' }}>বাজেট বাসা</span>
-              <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>১৫,০০০৳ এর নিচে</span>
+            <div className="category-card">
+              <div className="category-icon-wrapper">💰</div>
+              <span className="category-title">বাজেট বাসা</span>
+              <span className="category-subtitle">১৫,০০০৳ এর নিচে</span>
             </div>
           </Link>
 
           <Link to="/listings?bedrooms=3" style={{ textDecoration: 'none' }}>
-            <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '14px', textAlign: 'center' }}>
-              <span style={{ fontSize: '20px' }}>👨‍👩‍👧‍👦</span>
-              <span style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-primary)' }}>ফ্যামিলি বাসা</span>
-              <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>৩+ বেডরুম বাসা</span>
+            <div className="category-card">
+              <div className="category-icon-wrapper">👨‍👩‍👧‍👦</div>
+              <span className="category-title">ফ্যামিলি বাসা</span>
+              <span className="category-subtitle">৩+ বেডরুম বাসা</span>
             </div>
           </Link>
 
           <Link to="/listings?hasLift=true" style={{ textDecoration: 'none' }}>
-            <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '14px', textAlign: 'center' }}>
-              <span style={{ fontSize: '20px' }}>🛗</span>
-              <span style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-primary)' }}>লিফট ব্যাকআপ</span>
-              <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>আধুনিক সুযোগ-সুবিধা</span>
+            <div className="category-card">
+              <div className="category-icon-wrapper">🛗</div>
+              <span className="category-title">লিফট ব্যাকআপ</span>
+              <span className="category-subtitle">আধুনিক সুযোগ-সুবিধা</span>
             </div>
           </Link>
         </div>
