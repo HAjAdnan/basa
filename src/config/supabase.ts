@@ -3,11 +3,23 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
+const isValidUrl = (url: any): boolean => {
+  if (typeof url !== 'string') return false;
+  return url.startsWith('http://') || url.startsWith('https://');
+};
+
 // Check if we should use mock database
-export const isUsingMock = !supabaseUrl || !supabaseAnonKey || supabaseUrl === 'YOUR_SUPABASE_URL';
+export const isUsingMock = 
+  !isValidUrl(supabaseUrl) || 
+  !supabaseAnonKey || 
+  supabaseUrl === 'YOUR_SUPABASE_URL' || 
+  supabaseUrl === 'undefined' || 
+  supabaseUrl === 'null' ||
+  supabaseAnonKey === 'undefined' ||
+  supabaseAnonKey === 'null';
 
 // Real Supabase instance
-export const supabaseReal = !isUsingMock 
+export const supabaseReal = !isUsingMock && supabaseUrl && supabaseAnonKey
   ? createClient(supabaseUrl, supabaseAnonKey) 
   : null;
 
