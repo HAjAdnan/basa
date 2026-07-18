@@ -80,7 +80,7 @@ export const Home: React.FC = () => {
       </div>
 
       {/* 2. Mini-CTA: Post Ads (Moved to top and made smaller) */}
-      <Link to="/profile" style={{ textDecoration: 'none' }}>
+      <Link to="/profile" style={{ textDecoration: 'none', display: 'block' }}>
         <div className="card fade-in" style={{
           display: 'flex',
           alignItems: 'center',
