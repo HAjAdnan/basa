@@ -213,7 +213,7 @@ export const Listings: React.FC = () => {
           </p>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div className="listings-grid">
           {filteredListings.map(listing => (
             <ListingCard key={listing.id} listing={listing} />
           ))}
